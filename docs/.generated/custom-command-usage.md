@@ -25,7 +25,19 @@ check all files using pre-commit
 check-all
 ```
 
-## sample
+## update
+
+### description
+
+(No description.)
+
+### example
+
+```bash
+(No example.)
+```
+
+## reload-flake
 
 ### description
 
