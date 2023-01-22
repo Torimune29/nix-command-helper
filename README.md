@@ -68,7 +68,6 @@ flowchart TB
 ├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
-├── default.nix
 ├── docs
 │   ├── README.md
 │   ├── _sidebar.md

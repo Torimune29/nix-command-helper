@@ -18,17 +18,18 @@
       # commandHelper = import ./tools/command-helper;
       command-helper = import ./src/command-helper;
     in {
-      packages = rec {
-        commandHelper = command-helper;
-        default = commandHelper;
-      };
+      inherit command-helper;
+      # packages = rec {
+      #   commandHelper = command-helper;
+      #   default = commandHelper;
+      # };
 
       checks = {
         build = self.packages.${system}.default;
         pre-commit-check = pre-commit;
       };
       # `nix develop`
-      devShells.default = self.packages.${system}.commandHelper {
+      devShells.default = command-helper {
         inherit pkgs;
         inherit (self.checks.${system}.pre-commit-check) shellHook;
         shell = "mkShellNoCC";
