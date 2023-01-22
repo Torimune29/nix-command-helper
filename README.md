@@ -9,9 +9,9 @@ Command Helper using nix.
 
 This supports:
 
-1. generating command usage help
-1. generating command usage Markdown
-1. testing command example validation
+1. generating command usage help `help-commands`
+1. generating command usage Markdown `generate-document`
+1. testing command example validation `test-command-examples`
 
 ## Usage
 
@@ -23,15 +23,24 @@ uses this in
 
 ### help-commands
 
-TBD
+See outputs:
+[project-template](https://github.com/Torimune29/project-template#custom-command-help)
 
 ### generate-document
 
-TBD
+See outputs:
+[project-template](https://github.com/Torimune29/project-template/blob/main/docs/.generated/custom-command-usage.md)
+
+Uses:
+[project-template GithubActions](https://github.com/Torimune29/project-template/blob/main/.github/workflows/ci.yml)
 
 ### test-command-examples
 
-TBD
+See:
+[project-template](https://github.com/Torimune29/project-template/actions)
+
+Uses:
+[project-template GithubActions](https://github.com/Torimune29/project-template/blob/main/.github/workflows/ci.yml)
 
 ## Author
 
