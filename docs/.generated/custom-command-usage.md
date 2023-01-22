@@ -25,28 +25,44 @@ check all files using pre-commit
 check-all
 ```
 
-## update
+## update-dependencies
 
 ### description
 
-(No description.)
+Update flake dependencies.
+        If update depending flakes, run this.
 
 ### example
 
 ```bash
-(No example.)
+update-dependencies
 ```
 
-## reload-flake
+## reload-env
 
 ### description
 
-(No description.)
+Reload flake.
+        If reload not flake.nix but .nix, nix-direnv does not reload nix env.
+        So run this to reload nix env force.
 
 ### example
 
 ```bash
-(No example.)
+reload-env
+```
+
+## update-project-template
+
+### description
+
+Update project-template using git.
+        It creates branch "template", and you can delete.
+
+### example
+
+```bash
+reload-env
 ```
 
 ## pythontest
