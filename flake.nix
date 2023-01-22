@@ -15,14 +15,19 @@
       pkgs = import nixpkgs {inherit system;};
       pre-commit = import ./tools/pre-commit {inherit system pre-commit-hooks;};
       defaultCommands = import ./tools/commands {inherit pkgs;};
-      commandHelper = import ./tools/command-helper;
+      commandHelperSource = import ./src/command-helper;
     in {
+      packages = rec {
+        commandHelper = commandHelperSource;
+        default = commandHelper;
+      };
+
       checks = {
         build = self.packages.${system}.default;
         pre-commit-check = pre-commit;
       };
       # `nix develop`
-      devShells.default = commandHelper {
+      devShells.default = self.packages.${system}.commandHelper {
         inherit pkgs;
         inherit (self.checks.${system}.pre-commit-check) shellHook;
         shell = "mkShellNoCC";

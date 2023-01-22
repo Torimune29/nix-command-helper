@@ -75,13 +75,12 @@ flowchart TB
 │   └── template.md
 ├── flake.lock
 ├── flake.nix
+├── src
+│   └── command-helper
+│       └── default.nix
 └── tools
-    ├── command-helper
-    │   └── default.nix
     ├── commands
-    │   ├── default.nix
-    │   └── python
-    │       └── pythontest.py
+    │   └── default.nix
     └── pre-commit
         └── default.nix
 ```
@@ -101,7 +100,7 @@ check-all
         check all files using pre-commit
     example:
         $ check-all
-sample
+reload-env
     description:
         (No description.)
     example:

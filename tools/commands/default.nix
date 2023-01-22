@@ -45,18 +45,9 @@ in [
     example = "check-all";
   })
   (command {
-    name = "sample";
+    name = "reload-env";
     script = ''
-      echo "This is sample command."
+      touch flake.nix
     '';
-  })
-  (pythonCommand {
-    command = {
-      name = "pythontest";
-      script = builtins.readFile ./python/pythontest.py;
-      description = "python test";
-      example = "pythontest";
-    };
-    libraries = with pkgs.python3Packages; [pyyaml];
   })
 ]
