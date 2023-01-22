@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - name: generate custom command usage document
+        run: |
+          nix develop --command bash -c "generate-document > docs/.generated/custom-command-usage.md"
+      - name: nix pre-commit check
+        run: |
+          nix develop --command pre-commit run --all-files
+      - name: help commands check
+        run: |
+          nix develop --command help-commands
+      - name: command examples validation
+        run: |
+          nix develop --command test-command-examples
+      - name: generate document
+        run: |
+          npx embedme "docs/**.md" "*.md" --source-root .
+          git config --local user.email ""41898282+github-actions[bot]@users.noreply.github.com""
+          git config --local user.name "github-actions[bot]"
+          (git add . && git commit -m "chore:🤖 generate docs" --no-verify) || true
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GP_TOKEN }}
+          branch: ${{ github.ref }}
