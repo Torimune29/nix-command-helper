@@ -105,11 +105,6 @@ reload-env
         (No description.)
     example:
         $ (No example.)
-pythontest
-    description:
-        python test
-    example:
-        $ pythontest
 
 ```
 
